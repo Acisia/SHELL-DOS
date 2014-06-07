@@ -4,27 +4,27 @@ REM  Extrait les films du plus ancien au plus recent
 REM **************************************************
 @echo off
 set PathDrive=%1
+set RepRacine=%~dp0
+set FicFilm=filmLst.log
 IF "%1"=="" GOTO ErrDrive
 Echo Le lecteur est : "%1"
 Goto START
   
-set RepRacine=%cd%\
-set FicFilm=filmLst.log
 
 
 :START
-@echo ------------ DEBUT DU TRAITEMENT --------------------
+ECHO ------------ DEBUT DU TRAITEMENT --------------------
 REM tri par ordre de type de fichier, date du plus recent au moins recent
-dir /oE-D %PathDrive%
+dir /oE-D %PathDrive% > "%RepRacine%%FicFilm%"
 
-@echo ------------ FIN DU TRAITEMENT --------------------
+ECHO ------------ FIN DU TRAITEMENT --------------------
 
 goto END
 :ERRCASE
 
 
 :ErrDrive
-@echo ------------ ERREUR --------------------
-@echo   -- Entrez le lecteur en parametre.
+ECHO ------------ ERREUR --------------------
+ECHO   -- Entrez le lecteur en parametre.
 
 :END
