@@ -6,8 +6,12 @@ REM **************************************************
 set PathDrive=%1
 set RepRacine=%~dp0
 set FicFilm=filmLst.log
-IF "%1"=="" GOTO ErrDrive
-Echo Le lecteur est : "%1"
+set RepResult=%RepRacine%RESULTAT
+REM **TEST LECTEUR ET CHEMIN********************************************
+IF "%1"=="" GOTO ErrDrive 
+ECHO Le lecteur est : "%1"
+IF NOT exist "%RepResult%\*.*" MKDIR %RepResult%
+
 Goto START
   
 
@@ -15,7 +19,9 @@ Goto START
 :START
 ECHO ------------ DEBUT DU TRAITEMENT --------------------
 REM tri par ordre de type de fichier, date du plus recent au moins recent
-dir /oE-D %PathDrive% > "%RepRacine%%FicFilm%"
+ECHO -- DEBUT -- ECRITURE dans fichier %RepResult%\%FicFilm%
+dir /oE-D %PathDrive% > "%RepResult%\%FicFilm%"
+ECHO -- FIN --  ECRITURE dans fichier %RepResult%\%FicFilm%
 
 ECHO ------------ FIN DU TRAITEMENT --------------------
 
