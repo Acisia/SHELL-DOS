@@ -10,7 +10,7 @@ set RepResult=%RepRacine%RESULTAT
 REM **TEST LECTEUR ET CHEMIN********************************************
 IF "%1"=="" GOTO ErrDrive 
 ECHO Le lecteur est : "%1"
-IF NOT exist "%RepResult%\*.*" MKDIR %RepResult%
+IF NOT exist "%RepResult%\*.*" MKDIR "%RepResult%"
 
 Goto START
   
