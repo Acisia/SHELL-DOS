@@ -19,11 +19,19 @@ Goto START
 :START
 ECHO ------------ DEBUT DU TRAITEMENT --------------------
 REM tri par ordre de type de fichier, date du plus recent au moins recent
+ECHO --
 ECHO -- DEBUT -- ECRITURE dans fichier %RepResult%\%FicFilm%
+ECHO --
+ECHO -- ...
+ECHO --
 dir /oE-D %PathDrive% > "%RepResult%\%FicFilm%"
 ECHO -- FIN --  ECRITURE dans fichier %RepResult%\%FicFilm%
-
-ECHO ------------ FIN DU TRAITEMENT --------------------
+ECHO --
+ECHO ------------ FIN DU TRAITEMENT -----------------------
+ECHO -- 
+ECHO --  Lire fichier %RepResult%\%FicFilm%
+ECHO -- 
+ECHO -------------------------------------------------------
 
 goto END
 :ERRCASE
@@ -32,5 +40,6 @@ goto END
 :ErrDrive
 ECHO ------------ ERREUR --------------------
 ECHO   -- Entrez le lecteur en parametre.
-
+ECHO   -- ex : film.cmd z:
+ECHO -----------------------------------------
 :END
